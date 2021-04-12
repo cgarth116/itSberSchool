@@ -18,6 +18,10 @@ public class Main {
         while (count < k) {
             count = count + 9 * powOur(10, i) * (i + 1);
             i++;
+            if (i == 18){
+                count = Long.MAX_VALUE;
+                break;
+            }
         }
 
         //search starting from this number and from this step
