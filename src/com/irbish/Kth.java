@@ -2,7 +2,7 @@ package com.irbish;
 
 import java.util.Scanner;
 
-public class Main {
+public class Kth {
 
     public static void main(String[] args) {
         long    i = 0;
