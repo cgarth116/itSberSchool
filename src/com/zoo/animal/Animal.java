@@ -10,7 +10,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         this.weight = weight;
     }
 
-    //default
+    //default for each animal
     protected float    weightMin;
     protected float    weightMax;
     protected float    ageMax;
@@ -18,6 +18,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
     protected double   moveCoeff;
     protected double   eatCoeff;
     protected double   sleepCoeff;
+    protected String   type;
 
     protected String    name;
     protected int       age;
@@ -42,6 +43,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
     public float            getWeight(){
         return this.weight;
     }
+    public String           getType() {return this.type; }
 
     public void move(float meters) throws NegativeValueExeption, LowMaxValueExeption{
         if (meters <= 0){
@@ -59,7 +61,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         }
         if (this.weight + kilo * this.eatCoeff >= this.weightMax){
             this.weight = this.weightMax;
-            throw new LowMaxValueExeption("I can't eat. I need sleep or move." + this.weight + " " +this.weightMin);
+            throw new LowMaxValueExeption("I can't eat. I need sleep or move.");
         }
         this.weight += kilo * this.eatCoeff;
     }

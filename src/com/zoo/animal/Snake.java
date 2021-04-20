@@ -14,6 +14,7 @@ public class Snake extends Animal {
         this.moveCoeff = -0.1;
         this.eatCoeff = 1;
         this.sleepCoeff = -0.5;
+        this.type = "SNAKE";
 
         this.say = sayDefault;
 

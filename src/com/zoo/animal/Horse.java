@@ -14,6 +14,7 @@ public class Horse extends Animal {
         this.moveCoeff = -0.3;
         this.eatCoeff = 0.3;
         this.sleepCoeff = -0.6;
+        this.type = "HORSE";
 
         this.say = sayDefault;
 

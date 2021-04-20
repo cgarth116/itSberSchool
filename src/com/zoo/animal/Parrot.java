@@ -14,6 +14,7 @@ public class Parrot extends Animal {
         this.moveCoeff = -0.02;
         this.eatCoeff = 1;
         this.sleepCoeff = -0.02;
+        this.type = "PARROT";
 
         this.say = sayDefault;
 
