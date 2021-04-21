@@ -10,23 +10,8 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         this.weight = weight;
     }
 
-    //default for each animal
-    protected float    weightMin;
-    protected float    weightMax;
-    protected float    ageMax;
-    protected String   sayDefault;
-    protected double   moveCoeff;
-    protected double   eatCoeff;
-    protected double   sleepCoeff;
-    protected String   type;
-
-    protected String    name;
-    protected int       age;
-    protected String    say;
-    protected float     weight;
-
-    //we can do abstract all metod
-    //but why(simple the same type realization)?
+    //we must do abstract but they have simple copy\paste realization
+    //let's try this option )))
     public String           getName(){
         return this.name;
     }
@@ -45,7 +30,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
     }
     public String           getType() {return this.type; }
 
-    public void move(float meters) throws NegativeValueExeption, LowMaxValueExeption{
+    public void             move(float meters) throws NegativeValueExeption, LowMaxValueExeption{
         if (meters <= 0){
             throw new NegativeValueExeption("meters!");
         }
@@ -55,7 +40,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         }
         this.weight += meters * this.moveCoeff;
     }
-    public void eat(float kilo) throws NegativeValueExeption, LowMaxValueExeption{
+    public void             eat(float kilo) throws NegativeValueExeption, LowMaxValueExeption{
         if (kilo <= 0){
             throw new NegativeValueExeption("kilo!");
         }
@@ -65,7 +50,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         }
         this.weight += kilo * this.eatCoeff;
     }
-    public void sleep(float hours) throws NegativeValueExeption, LowMaxValueExeption {
+    public void             sleep(float hours) throws NegativeValueExeption, LowMaxValueExeption {
         if (hours <= 0){
             throw new NegativeValueExeption("hours!");
         }
@@ -75,4 +60,19 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
         }
         this.weight += hours * this.sleepCoeff;
     }
+
+    protected String    name;
+    protected int       age;
+    protected String    say;
+    protected float     weight;
+
+    //default for each animal
+    protected float     weightMin;
+    protected float     weightMax;
+    protected float     ageMax;
+    protected String    sayDefault;
+    protected double    moveCoeff;
+    protected double    eatCoeff;
+    protected double    sleepCoeff;
+    protected String    type;
 }
