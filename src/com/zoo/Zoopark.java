@@ -3,6 +3,9 @@ package com.zoo;
 import com.zoo.animal.*;
 import com.zoo.exeption.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Zoopark {
 
     //help metod
@@ -79,6 +82,7 @@ public class Zoopark {
         Aviary<Parrot>  parrotAviary = new Aviary<Parrot>();
         //check constructor with parameters
         Aviary<Sheep>   sheepAviary = new Aviary<Sheep>("Sheep aviary", 10);
+        Aviary<Sheep>   sheepAviarySecond = new Aviary<Sheep>("Sheep 2", 5);
 
         //check LowMaxValueExeption
         try{

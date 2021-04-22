@@ -1,6 +1,5 @@
 package com.zoo;
 
-import com.zoo.animal.*;
 import com.zoo.exeption.LowMaxValueExeption;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class Aviary<T> {
     }
 
     public void     addAnimal(T a) throws LowMaxValueExeption {
-        if (aviary.indexOf(a) >= 0) {
+        if (aviary.contains(a)) {
             throw new LowMaxValueExeption("The animal is already in the aviary of \"" + this.name + "\"");
         }
         if (this.size == this.capacity){
@@ -31,7 +30,7 @@ public class Aviary<T> {
         this.size++;
     }
     public void     deleteAnimal(T a) throws LowMaxValueExeption{
-        if (aviary.indexOf(a) < 0) {
+        if (!aviary.contains(a)) {
             throw new LowMaxValueExeption("There is no such animal in the aviary of \"" + this.name + "\"");
         }
         aviary.remove(aviary.indexOf((T) a));
