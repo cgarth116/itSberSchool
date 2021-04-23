@@ -109,7 +109,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        int y = 0;
+        int y;
+        String  inputWord = "";
         var lettersForUse = new LinkedList<Character>();                            //letters to compose word's
         var wordHistoryAll = new HashMap<Integer, LinkedHashSet<String>>();         //dictionary of entered words
         var dictionary = new HashMap<String, Integer>();                            //rus-eng dictionary
@@ -125,8 +126,9 @@ public class Main {
 
         //input initial conditions
         var countPlayers = enterCountPlayers(0);
-        var inputWord = enterWord("Введите начальное слово:");
-
+        while (inputWord.isEmpty() || inputWord.isBlank()) {
+            inputWord = enterWord("Введите начальное слово:");
+        }
         for(int i = 1; i <= countPlayers; i++){                                     //create queue players, history dic
             playerQueue.offer(i);
             wordHistoryAll.put(i, new LinkedHashSet());
@@ -143,7 +145,7 @@ public class Main {
                 if (!wordCheckByLetterOccurrence(userWord, lettersForUse) ||
                         !checkInProgramDictionary(userWord, dictionary)) {
                             System.out.println(ANSI_RED + "Слово \"" + userWord +
-                                                "\" не подходит\\не найдено в словаре программы" + ANSI_RESET);
+                                                "\" не подходит или не найдено в словаре программы" + ANSI_RESET);
                             userWord = enterWord(ANSI_YELLOW + "Повторный ход игрока №" + whoseMove + ":" + ANSI_RESET);
                         continue;
                 }
