@@ -3,7 +3,7 @@ package com.irbish.balda;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Balda {
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
@@ -29,15 +29,21 @@ public class Main {
         }
         return true;
     }
-    private static int      enterCountPlayers(int countPlayers){
+    private static int      enterCountPlayers(){
         var in = new Scanner(System.in);
-        while (countPlayers == 0) {
+        int countPlayers;
+        do {
             System.out.print("Введите кол-во игроков(1-10): ");
+            while (!in.hasNextInt()) {
+                System.out.println("Введено неккоректное значение!");
+                System.out.print("Введите кол-во игроков(1-10): ");
+                in.next();
+            }
             countPlayers = in.nextInt();
             if (countPlayers <= 0 || countPlayers > 10){
-                countPlayers = 0;
+                System.out.println("Введено неккоректное количество игроков!");
             }
-        }
+        } while (countPlayers <= 0 || countPlayers > 10);
         return countPlayers;
     }
     private static String   enterWord(String message){
@@ -111,6 +117,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         int y;
         String  inputWord = "";
+        int countPlayers = 0;
         var lettersForUse = new LinkedList<Character>();                            //letters to compose word's
         var wordHistoryAll = new HashMap<Integer, LinkedHashSet<String>>();         //dictionary of entered words
         var dictionary = new HashMap<String, Integer>();                            //rus-eng dictionary
@@ -125,7 +132,7 @@ public class Main {
         }
 
         //input initial conditions
-        var countPlayers = enterCountPlayers(0);
+        countPlayers = enterCountPlayers();
         while (inputWord.isEmpty() || inputWord.isBlank()) {
             inputWord = enterWord("Введите начальное слово:");
         }
