@@ -117,7 +117,7 @@ public class Balda {
     public static void main(String[] args) throws IOException {
         int y;
         String  inputWord = "";
-        int countPlayers = 0;
+        int countPlayers;
         var lettersForUse = new LinkedList<Character>();                            //letters to compose word's
         var wordHistoryAll = new HashMap<Integer, LinkedHashSet<String>>();         //dictionary of entered words
         var dictionary = new HashMap<String, Integer>();                            //rus-eng dictionary
