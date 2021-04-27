@@ -3,9 +3,12 @@ package com.zoo.animal;
 import com.zoo.exeption.*;
 
 public class Snake extends Animal {
-    public Snake(String name, int age, float weight) throws LowMaxValueExeption{
+    public Snake(String name, int age, float weight) throws LowMaxValueExeption {
         super(name, age, weight);
+    }
 
+    //method's with different implementation
+    protected void  setDefault() {
         //default
         this.weightMin = 3;
         this.weightMax = 127;
@@ -15,19 +18,20 @@ public class Snake extends Animal {
         this.eatCoeff = 1;
         this.sleepCoeff = -0.5;
         this.type = "SNAKE";
-
-        this.say = sayDefault;
-
-        if (age <= 0 || age > this.ageMax || weight < this.weightMin || weight > this.weightMax){
-            throw new LowMaxValueExeption("Wrong input value!");
-        }
     }
-
-    public void say() {
+    public void     say() {
         System.out.println("I'm \"" + this.name + "\" there is no animal smarter. " + this.getSay());
     }
-    public void setName() {
+    public void     setName() {
         this.name = "Snake";
     }
 
+    //unique methods
+    public void     baskToSun() {
+        System.out.println("Sun it's good");
+    }
+
+    public void     toBeHide() {
+        System.out.println("Hiding among the stones");
+    }
 }

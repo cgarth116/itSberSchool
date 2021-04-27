@@ -4,10 +4,17 @@ import com.zoo.exeption.*;
 
 abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
 
-    public Animal(String name, int age, float weight){
+    public Animal(String name, int age, float weight) throws LowMaxValueExeption{
         this.name = name;
         this.age = age;
         this.weight = weight;
+
+        this.setDefault();
+
+        this.say = sayDefault;
+        if (age < 0 || age > this.ageMax || weight < this.weightMin || weight > this.weightMax){
+            throw new LowMaxValueExeption("Wrong input value!");
+        }
     }
 
     //we must do abstract but they have simple copy\paste realization
@@ -15,10 +22,11 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
     public String           getName(){
         return this.name;
     }
+    protected abstract void setDefault();
     public abstract void    setName();
     public void             setName(String name){
         this.name = name;
-    }
+    }          //method with different signature
     public int              getAge(){
         return this.age;
     }
