@@ -3,7 +3,7 @@ package com.zoo.animal;
 import com.zoo.exeption.*;
 
 public class Elephant extends Animal {
-    public Elephant(String name, int age, float weight) throws LowMaxValueExeption{
+    public Elephant(String name, int age, float weight) throws MessageExeption{
         super(name, age, weight);
     }
     //method's with different implementation
@@ -26,7 +26,7 @@ public class Elephant extends Animal {
     }
     //unique methods
     public void     waterhole(){ System.out.println("A pond in the savannah");}
-    public Elephant giveBirth() throws LowMaxValueExeption {
+    public Elephant giveBirth() throws MessageExeption {
         Elephant elephant = new Elephant("Bamby", 0, 1400);
         return  elephant;
     }

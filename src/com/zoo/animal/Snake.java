@@ -3,7 +3,7 @@ package com.zoo.animal;
 import com.zoo.exeption.*;
 
 public class Snake extends Animal {
-    public Snake(String name, int age, float weight) throws LowMaxValueExeption {
+    public Snake(String name, int age, float weight) throws MessageExeption {
         super(name, age, weight);
     }
 

@@ -4,7 +4,7 @@ import com.zoo.exeption.*;
 
 abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
 
-    public Animal(String name, int age, float weight) throws LowMaxValueExeption{
+    public Animal(String name, int age, float weight) throws MessageExeption{
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -13,7 +13,7 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
 
         this.say = sayDefault;
         if (age < 0 || age > this.ageMax || weight < this.weightMin || weight > this.weightMax){
-            throw new LowMaxValueExeption("Wrong input value!");
+            throw new MessageExeption("Wrong input value!");
         }
     }
 
@@ -38,33 +38,33 @@ abstract public class Animal implements Movable, Eatble, Sleepble, Sayble{
     }
     public String           getType() {return this.type; }
 
-    public void             move(float meters) throws NegativeValueExeption, LowMaxValueExeption{
+    public void             move(float meters) throws NegativeValueExeption, MessageExeption{
         if (meters <= 0){
             throw new NegativeValueExeption("meters!");
         }
         if (this.weight + meters * this.moveCoeff <= this.weightMin){
             this.weight = this.weightMin;
-            throw new LowMaxValueExeption("I can't move. I need eating.");
+            throw new MessageExeption("I can't move. I need eating.");
         }
         this.weight += meters * this.moveCoeff;
     }
-    public void             eat(float kilo) throws NegativeValueExeption, LowMaxValueExeption{
+    public void             eat(float kilo) throws NegativeValueExeption, MessageExeption{
         if (kilo <= 0){
             throw new NegativeValueExeption("kilo!");
         }
         if (this.weight + kilo * this.eatCoeff >= this.weightMax){
             this.weight = this.weightMax;
-            throw new LowMaxValueExeption("I can't eat. I need sleep or move.");
+            throw new MessageExeption("I can't eat. I need sleep or move.");
         }
         this.weight += kilo * this.eatCoeff;
     }
-    public void             sleep(float hours) throws NegativeValueExeption, LowMaxValueExeption {
+    public void             sleep(float hours) throws NegativeValueExeption, MessageExeption {
         if (hours <= 0){
             throw new NegativeValueExeption("hours!");
         }
         if (this.weight + hours * sleepCoeff <= weightMin){
             this.weight = weightMin;
-            throw new LowMaxValueExeption("I can't sleep. I need eating.");
+            throw new MessageExeption("I can't sleep. I need eating.");
         }
         this.weight += hours * this.sleepCoeff;
     }
