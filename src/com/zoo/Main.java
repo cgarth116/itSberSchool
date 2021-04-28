@@ -49,6 +49,7 @@ public class Main {
         System.out.println(ANSI_GREEN + "\nTest #3(try add animal in aviary which non in our Zoo):" + ANSI_RESET);
         ourZoo.addAnimalToAviary(sheep2, "Sheep aviary not our Zoo");
 
+        ourZoo.delAviary("Parrot aviary");
         System.out.println(ANSI_GREEN + "\nTest #4(try to add 4 animals from one to another aviary):" + ANSI_RESET);
         ourZoo.addAnimalToAviary(parrot1, "Parrot aviary 2");
         ourZoo.addAnimalToAviary(parrot2, "Parrot aviary 2");
@@ -58,5 +59,6 @@ public class Main {
         ourZoo.whoInAviarySays("Parrot aviary 2");
         //let's look who in aviary?
         ourZoo.whoInAviarySays("Parrot aviary");
+
     }
 }

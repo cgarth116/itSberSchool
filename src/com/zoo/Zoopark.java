@@ -7,65 +7,6 @@ import java.util.ArrayList;
 
 public class Zoopark {
 
-    private class Aviary {
-
-        public static final int CAPACITYAVIARY = 10;
-
-        public Aviary() {
-            this.name = "New aviary";
-            this.capacity = CAPACITYAVIARY;
-            this.aviary = new ArrayList();
-        }
-        public Aviary(String name, int capacity) {
-            this();
-            this.name = name;
-            this.capacity = capacity;
-        }
-
-        public void                 addAnimal(Animal a) throws MessageExeption, NegativeValueExeption {
-            if ((!aviary.isEmpty() && a.getClass() == aviary.get(0).getClass()) || aviary.isEmpty()) {
-                if (aviary.contains(a)) {
-                    throw new MessageExeption("The animal is already in the aviary of \"" + this.name + "\"");
-                }
-                if (this.aviary.size() == this.capacity) {
-                    throw new NegativeValueExeption("The aviary of \"" + this.name + "\" is full");
-                }
-                this.aviary.add(a);
-            } else {
-                throw new NegativeValueExeption("type of animal \"" +
-                                                a.getClass().getSimpleName() +
-                                                "\" but aviary for \"" +
-                                                aviary.get(0).getClass().getSimpleName() +
-                                                "\"");
-            }
-        }
-        public void                 deleteAnimal(Animal a) throws NegativeValueExeption {
-            if (!aviary.contains(a)) {
-                throw new NegativeValueExeption("There is no such animal in the aviary of \"" + this.name + "\"");
-            }
-            aviary.remove(a);
-        }
-        public ArrayList<Animal>    getListAnimalIn() {
-            return aviary;
-        }
-        public String               getName() {
-            return this.name;
-        }
-        public void                 setName(String name) {
-            this.name = name;
-        }
-        public int                  getSize() {
-            return this.aviary.size();
-        }
-        public int                  getCapacity() {
-            return this.capacity;
-        }
-
-        private String              name;
-        private int                 capacity;
-        private ArrayList<Animal>   aviary;
-    }
-
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -81,7 +22,7 @@ public class Zoopark {
 
     private Aviary  checkAviaryInZoo(String name){
         for (Aviary aviary : this.aviaryZoo) {
-            if (aviary.getName() == name) {
+            if (aviary.getName().equals(name)) {
                 return aviary;
             }
         }
@@ -113,7 +54,7 @@ public class Zoopark {
             if (aviary == null) {
                 throw new NegativeValueExeption(CANTFINDAVIARY);
             }
-            //todo we must del animal in deleted aviary for good job
+            aviary.getListAnimalIn().clear();                                       //we clean the aviary from animal
             this.aviaryZoo.remove(aviary);
         } catch (NegativeValueExeption e) {
             getMessage(e.getMessage());
@@ -127,7 +68,7 @@ public class Zoopark {
             }
             for (Aviary a : aviaryZoo) {
                 if (checkAnimalInAviary(animal, a)) {
-                    if (a != aviary) {                                          //change aviary for animal
+                    if (!a.equals(aviary)) {                                          //change aviary for animal
                         a.deleteAnimal(animal);
                         break;
                     } else {                                                    //if animal already in aviary(name)
